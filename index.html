@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disputa da Live - 13 vs 22</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <!-- HEADER -->
+    <div id="header">
+      <div class="header-left">
+        <div class="logo-live">📺 LIVE</div>
+        <div class="round-badge">RODADA ESPECIAL</div>
+      </div>
+      <div class="header-center">
+        <div id="timer">7:00</div>
+        <div class="round-label">RODADA <span id="current-round">5</span></div>
+      </div>
+      <div class="header-right">
+        <div class="wins-label">VITÓRIAS</div>
+        <div class="wins-score">
+          <span class="wins-13" id="wins-left">0</span>
+          <span class="x">×</span>
+          <span class="wins-22" id="wins-right">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BARRA DE PROGRESSO -->
+    <div id="progress-bar">
+      <div class="bar-fill bar-13" id="bar-left" style="width: 50%;"><span class="bar-num">13</span></div>
+      <div class="bar-fill bar-22" id="bar-right" style="width: 50%;"><span class="bar-num">22</span></div>
+    </div>
+
+    <!-- FAIXA DE VANTAGEM -->
+    <div id="advantage-strip">
+      <div class="adv-side adv-13">13</div>
+      <div class="adv-text" id="advantage-text">EMPATE</div>
+      <div class="adv-side adv-22">22</div>
+    </div>
+
+    <!-- CARDS DOS CANDIDATOS -->
+    <div id="candidatos-cards">
+      <div class="cand-card cand-13">
+        <div class="cand-top">
+          <div class="cand-number-badge">13</div>
+          <div class="cand-photo cand-photo-13"><img src="images/lula.png" alt="Lula"></div>
+        </div>
+        <div class="cand-name">LULA</div>
+        <div class="cand-score-row"><span class="cand-score" id="score-left">0</span><span class="cand-score-label">pontos</span></div>
+        <div class="cand-percent" id="percent-left">50%</div>
+        <div class="lb-title">TOP DOADORES</div>
+        <div class="leaderboard" id="leaderboard-left"><div class="lb-empty">Aguardando...</div></div>
+      </div>
+
+      <div class="cand-card cand-22">
+        <div class="cand-top">
+          <div class="cand-number-badge">22</div>
+          <div class="cand-photo cand-photo-22"><img src="images/flavio.png" alt="Flávio Bolsonaro"></div>
+        </div>
+        <div class="cand-name">FLÁVIO</div>
+        <div class="cand-score-row"><span class="cand-score" id="score-right">0</span><span class="cand-score-label">pontos</span></div>
+        <div class="cand-percent" id="percent-right">50%</div>
+        <div class="na-frente" id="na-frente-badge" style="display:none;">NA FRENTE</div>
+        <div class="lb-title">TOP DOADORES</div>
+        <div class="leaderboard" id="leaderboard-right"><div class="lb-empty">Aguardando...</div></div>
+      </div>
+    </div>
+
+    <!-- CARDS DE PRESENTES -->
+    <div id="gift-cards">
+      <div class="gift-card gc-13"><div class="gift-icon">🌹</div><div class="gift-info"><div class="gift-title">ROSA</div><div class="gift-sub">apoia o <span class="num-13">13</span></div></div></div>
+      <div class="gift-card gc-22"><div class="gift-icon">🌹</div><div class="gift-info"><div class="gift-title">ROSA BRANCA</div><div class="gift-sub">apoia o <span class="num-22">22</span></div></div></div>
+    </div>
+
+    <!-- TEXTO DE PARTICIPAÇÃO -->
+    <div id="participar-text">ou comente <span class="num-13">13</span> ou <span class="num-22">22</span> no chat para participar</div>
+
+    <!-- AS DUAS URNAS -->
+    <div id="urnas-container">
+      <!-- URNA 13 (LULA) -->
+      <div class="urna urna-13" id="urna-13">
+        <div class="urna-top-label">JUSTIÇA ELEITORAL</div>
+
+        <div class="urna-body">
+          <div class="urna-visor">
+            <div class="visor-header">SEU VOTO PARA</div>
+            <div class="visor-cargo">PRESIDENTE</div>
+
+            <div class="visor-content">
+              <div class="visor-foto">
+                <img src="images/lula.png" alt="Lula">
+              </div>
+              <div class="visor-info">
+                <div class="visor-numero">13</div>
+                <div class="visor-nome">LULA</div>
+                <div class="visor-partido">PT</div>
+              </div>
+            </div>
+
+            <div class="visor-display">
+              <span class="visor-digit" id="digit1-13">_</span>
+              <span class="visor-digit" id="digit2-13">_</span>
+            </div>
+
+            <div class="visor-message" id="visor-msg-13"></div>
+          </div>
+
+          <div class="urna-teclado-wrap">
+            <div class="teclado">
+              <div class="tecla-row"><div class="tecla" data-key="1">1</div><div class="tecla" data-key="2">2</div><div class="tecla" data-key="3">3</div></div>
+              <div class="tecla-row"><div class="tecla" data-key="4">4</div><div class="tecla" data-key="5">5</div><div class="tecla" data-key="6">6</div></div>
+              <div class="tecla-row"><div class="tecla" data-key="7">7</div><div class="tecla" data-key="8">8</div><div class="tecla" data-key="9">9</div></div>
+              <div class="tecla-row"><div class="tecla vazia"></div><div class="tecla" data-key="0">0</div><div class="tecla vazia"></div></div>
+            </div>
+            <div class="teclado-acoes">
+              <div class="btn-branco">BRANCO</div>
+              <div class="btn-corrige">CORRIGE</div>
+              <div class="btn-confirma" id="confirma-13">CONFIRMA</div>
+            </div>
+            <div class="mao" id="mao-13">☝️</div>
+          </div>
+        </div>
+
+        <div class="urna-footer">
+          <div class="footer-number">13</div>
+          <div class="footer-status" id="status-13">AGUARDANDO</div>
+        </div>
+      </div>
+
+      <!-- URNA 22 (FLÁVIO) -->
+      <div class="urna urna-22" id="urna-22">
+        <div class="urna-top-label">JUSTIÇA ELEITORAL</div>
+
+        <div class="urna-body">
+          <div class="urna-visor">
+            <div class="visor-header">SEU VOTO PARA</div>
+            <div class="visor-cargo">PRESIDENTE</div>
+
+            <div class="visor-content">
+              <div class="visor-foto">
+                <img src="images/flavio.png" alt="Flávio Bolsonaro">
+              </div>
+              <div class="visor-info">
+                <div class="visor-numero">22</div>
+                <div class="visor-nome">FLÁVIO</div>
+                <div class="visor-partido">PL</div>
+              </div>
+            </div>
+
+            <div class="visor-display">
+              <span class="visor-digit" id="digit1-22">_</span>
+              <span class="visor-digit" id="digit2-22">_</span>
+            </div>
+
+            <div class="visor-message" id="visor-msg-22"></div>
+          </div>
+
+          <div class="urna-teclado-wrap">
+            <div class="teclado">
+              <div class="tecla-row"><div class="tecla" data-key="1">1</div><div class="tecla" data-key="2">2</div><div class="tecla" data-key="3">3</div></div>
+              <div class="tecla-row"><div class="tecla" data-key="4">4</div><div class="tecla" data-key="5">5</div><div class="tecla" data-key="6">6</div></div>
+              <div class="tecla-row"><div class="tecla" data-key="7">7</div><div class="tecla" data-key="8">8</div><div class="tecla" data-key="9">9</div></div>
+              <div class="tecla-row"><div class="tecla vazia"></div><div class="tecla" data-key="0">0</div><div class="tecla vazia"></div></div>
+            </div>
+            <div class="teclado-acoes">
+              <div class="btn-branco">BRANCO</div>
+              <div class="btn-corrige">CORRIGE</div>
+              <div class="btn-confirma" id="confirma-22">CONFIRMA</div>
+            </div>
+            <div class="mao" id="mao-22">☝️</div>
+          </div>
+        </div>
+
+        <div class="urna-footer">
+          <div class="footer-number">22</div>
+          <div class="footer-status" id="status-22">AGUARDANDO</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OVERLAY DO FIM / PARTICIPANTE -->
+    <div id="overlay-13" class="urna-overlay overlay-13"><div class="fim-box"><div class="fim-text">FIM</div><div class="fim-ponto">+1 PONTO</div></div></div>
+    <div id="overlay-22" class="urna-overlay overlay-22"><div class="participante-box"><div class="part-header">PARTICIPANTE</div><div class="part-numero-label">Número:</div><div class="part-numero"><span class="part-digit">2</span><span class="part-digit">2</span></div><div class="part-nome-label">Nome:</div><div class="part-nome">FLÁVIO</div><div class="part-foto"><div class="avatar-letra-small">F</div></div></div></div>
+
+    <!-- NOTIFICAÇÃO -->
+    <div id="gift-notification" class="hidden"><span id="notif-user"></span> votou <span id="notif-gift"></span></div>
+
+    <!-- TELA DE FIM DE RODADA -->
+    <div id="round-end-screen" class="hidden"><h1 id="round-winner-text">FIM DA RODADA!</h1><p id="round-winner-name"></p><p class="next-round-info">Próxima rodada em <span id="next-round-countdown">5</span>s</p></div>
+
+    <!-- TELA DE FIM DE JOGO -->
+    <div id="match-end-screen" class="hidden"><h1>🏆 VITÓRIA FINAL!</h1><p id="match-winner-name"></p><button id="restart-match">Jogar Novamente</button></div>
+
+    <!-- PAINEL DE TESTE -->
+    <div id="test-panel"><button data-side="left" data-action="vote">🌹 Voto 13</button><button data-side="right" data-action="vote">🤍 Voto 22</button><button data-side="left" data-action="points">💰 +10 pro 13</button><button data-side="right" data-action="points">💰 +10 pro 22</button><button id="reset-btn">🔄 Reset</button></div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
